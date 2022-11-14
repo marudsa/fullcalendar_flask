@@ -10,7 +10,7 @@ from models.calendar_model import Calendar
 
 app = Flask(__name__)
 
-app.secret_key = "caircocoders-ed"
+app.secret_key = "marudev-ed"
 
 host = "localhost"
 database = "testingdb"

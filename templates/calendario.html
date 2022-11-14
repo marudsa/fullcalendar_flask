@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Fullcalandar CRUD(Create, Read, Update, Delete) with Python Flask Jquery Ajax and Mysql</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+        var calendar = $('#calendar').fullCalendar({
+            editable:true,
+            header:{
+                left:'prev, next today',
+                center:'title',
+                right:'month, agendaWeek, agendaDay'
+            },
+            events: [{% for row in calendar %}{ id : '{{row.id}}', title : '{{row.title}}', start: '{{row.start_event}}', end : '{{row.end_event}}',},{% endfor %}],
+            // Allows a user to highlight multiple days or timeslots by clicking and dragging.            
+            selectable:true,
+            //Whether to draw a “placeholder” event while the user is dragging.        
+            selectHelper:true,
+            select: function(start, end, allDay)
+            {
+                var title = prompt("Enter event title");
+                if(title)
+                {
+                    var start = $.fullCalendar.formatDate(start, 'Y/MM/DD HH:mm:ss');
+                    var end = $.fullCalendar.formatDate(end, 'Y/MM/DD HH:mm:ss');
+                    $.ajax({
+                        url:"/insert",
+                        type:"POST",
+                        data:{title:title, start:start, end:end},
+                        success:function(data)
+                        {
+                            alert("Added Successfully");
+                            window.location.replace("/");
+                        }
+                    })
+                }
+            },
+            editable:true,
+            eventResize:function(event)
+            {
+                var start = $.fullCalendar.formatDate(event.start, 'Y/MM/DD HH:mm:ss');
+                var end = $.fullCalendar.formatDate(event.end, 'Y/MM/DD HH:mm:ss');
+                var title = event.title;
+                var id = event.id;
+                $.ajax({
+                    url:"/update",
+                    type:"POST",
+                    data:{title:title, start:start, end:end, id:id},
+                    success:function(){
+                        calendar.fullCalendar('refetchEvents');
+                        alert('Event Update');
+                    }
+                })
+            },
+            eventDrop:function(event)
+            {
+                var start = $.fullCalendar.formatDate(event.start, 'Y/MM/DD HH:mm:ss');
+                var end = $.fullCalendar.formatDate(event.end, 'Y/MM/DD HH:mm:ss');
+                var title = event.title;
+                var id = event.id;
+                $.ajax({
+                    url:"/update",
+                    type:"POST",
+                    data:{title:title, start:start, end:end, id:id},
+                    success:function(){
+                        calendar.fullCalendar('refetchEvents');
+                        alert('Event Update');
+                    }
+                })
+            },
+            eventClick:function(event)
+            {
+                if(confirm("Are you sure you want to remove ir?"))
+                {
+                    var id = event.id;
+                    $.ajax({
+                    url:"/ajax_delete",
+                    type:"POST",
+                    data:{id:id},
+                    success:function(){
+                        calendar.fullCalendar('refetchEvents');
+                        alert('Event Removed');
+                    }
+                })
+                }
+            },
+
+        });
+    });
+    
+  </script>
+ </head>
+ <body>
+  <br />
+  <h2 align="center"><a href="#">Fullcalandar CRUD(Create, Read, Update, Delete) with Python Flask Jquery Ajax and PostgreSQL</a></h2>
+  <br />
+  <div class="container">
+   <div id="calendar">calendario</div>
+  </div>
+ </body>
+</html>

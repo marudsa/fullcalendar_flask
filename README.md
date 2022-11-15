@@ -63,7 +63,11 @@ _4. Install all indicated packages (some may not be used)_
 _5. Run from index.py
 
 
-![Image text](https://github.com/marudsa/fullcalendar_flask/blob/feature/initial/static/20221114_181617.mp4)
+
+
+https://user-images.githubusercontent.com/110506792/201808287-b23ab611-6505-4a2e-b226-803fd3ecfbb8.mp4
+
+
 
 ![Image text](https://github.com/marudsa/fullcalendar_flask/blob/feature/initial/static/CalendarImg.JPG)
 

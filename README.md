@@ -2,18 +2,11 @@
 
 Events calendar using the fullcalendar plugin. Method based on Cairocoders. (Jul 2, 2021).Fullcalandar CRUD(Create, Read, Update, Delete) with Python Flask Jquery Ajax and PostgreSQL
 
-## Comenzando 🚀
+### Prerequisites 📋
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+_What things do you need to install the software and how to install them_
 
-Mira **Deployment** para conocer como desplegar el proyecto.
-
-
-### Pre-requisitos 📋
-
-_Que cosas necesitas para instalar el software y como instalarlas_
-
-Paquetes instalados localmente (la version puede cambiar por actualización)
+Locally installed packages (version may change per update)
 
 ```
 click==8.1.3
@@ -34,12 +27,12 @@ SQLAlchemy==1.4.42
 Werkzeug==2.2.2
 zope.interface==5.5.1
 ```
-Lenguaje y versión:
+Language and version:
 
 Python 3.11.0
-pip 22.3 (paquetes)
+pip 22.3 (packages)
 
-Herramienta visual de base de datos
+Visual database tool:
 
 MySQL Workbench 8.0
 
@@ -50,32 +43,30 @@ IDE: VSC
 
 
 
-### Instalación 🔧
+### Installation 🔧
 
-_Pasos para instalar a modo local el proyecto_
+_Steps to install the project locally_
 
-_1. Clonar repositorio en vsc o descargarlo_
+_1. Clone repository in vsc or download it_
 
-_2. Crear entorno virtual para python, dentro de la ruta donde esta la carpeta_
+_2. Create virtual environment for python, inside the path where the folder is_
 ```
 python -m virtualenv venv
 ```
-_3. Activarl entorno virtual_
+_3. Activate virtual environment_
 
 ```
 ..\Calendario\venv\Scripts> activate.bat
 ```
-_4. instalar todos los paquetes indicados (puede que no se use algunos)_
+_4. Install all indicated packages (some may not be used)_
 
-_5. Ejecuta desde index.py
+_5. Run from index.py
 
 
 ![Image text](https://github.com/marudsa/fullcalendar_flask/blob/feature/initial/static/20221114_181617.mp4)
 
 ![Image text](https://github.com/marudsa/fullcalendar_flask/blob/feature/initial/static/CalendarImg.JPG)
 
-## Autores ✒️
+## Authors ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Marudsa Muñoz Cifuentes** - *Trabajo Inicial* - [villanuevand](https://github.com/marudsa)
+* **Marudsa Muñoz Cifuentes** - *initial project* - [marudsa](https://github.com/marudsa)
